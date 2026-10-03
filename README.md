@@ -1,25 +1,4 @@
-# Padrões de Projeto — Categoria Extensão (Decorator, Iterator e Visitor)
-
-Trabalho acadêmico que apresenta e demonstra, por meio de mini-projetos em Java, os **padrões de projeto da categoria Extensão**: **Decorator**, **Iterator** e **Visitor**. Cada padrão é explicado conceitualmente e exemplificado com uma simulação de problema do mundo real:
-
-| Padrão | Mini-projeto | Problema real simulado |
-|---|---|---|
-| **Decorator** | `decorator/` | Sistema de pagamentos online (juros, taxas e seguro adicionados dinamicamente) |
-| **Iterator** | `iterator/` | Automação residencial (percorrer dispositivos inteligentes da casa) |
-| **Visitor** | `visitor/` | Carrinho de compras (cálculo de subtotal, frete e impostos por tipo de produto) |
-
----
-
-## 📚 Introdução — o que são padrões de extensão?
-Padrões de projeto (*design patterns*) são soluções reutilizáveis para problemas recorrentes no desenvolvimento de software, catalogados classicamente pelo livro *Design Patterns* (GoF, 1994). Eles não são código pronto, mas **modelos de como estruturar classes e objetos** para resolver um problema de forma flexível, testável e de fácil manutenção.
-
-A categoria **Extensão** agrupa padrões cujo propósito é **adicionar novas funcionalidades ou formas de percorrer/operar sobre objetos sem alterar o código já existente** — colocando em prática o princípio **Aberto-Fechado (OCP)**: *aberto para extensão, fechado para modificação*. Em vez de editar classes que já funcionam (ou criar uma explosão de subclasses para cada combinação possível), esses padrões permitem "plugar" novos comportamentos por composição:
-
-- **Decorator** → estende o **comportamento/valor** de um objeto envolvendo-o em camadas, em tempo de execução;
-- **Iterator** → estende a **forma de percorrer** uma coleção, sem expor sua estrutura interna;
-- **Visitor** → estende as **operações** que podem ser aplicadas sobre uma estrutura de objetos, sem alterar as classes desses objetos.
-
----
+# PADRÕES DE EXTENSÃO - 2ª Atividade Pontuada
 
 ## 1. Decorator — Sistema de Pagamentos Online
 
@@ -762,17 +741,4 @@ Total do pedido (subtotal + impostos + frete): R$ 5705.33
 
 Para adicionar uma **nova operação** ao carrinho (ex.: *cálculo de cashback*, *relatório de embalagens sustentáveis*) basta criar **um novo visitor** — `Livro`, `Eletronico`, `Vestuario` e `CarrinhoCompras` permanecem **intactos**. As operações sobre a estrutura são estendidas sem modificar as classes dos elementos, exatamente o que o OCP prega.
 
----
 
-## 4. Comparativo entre os três padrões
-
-| Aspecto | Decorator | Iterator | Visitor |
-|---|---|---|---|
-| **O que estende** | O comportamento/valor de **um objeto individual** | A **forma de percorrer** uma coleção | As **operações** sobre uma estrutura de objetos |
-| **Mecanismo** | Envolvimento em camadas (mesma interface) | Interface `hasNext()/next()` separada da coleção | Duplo despacho (`aceitar` → `visitar`) |
-| **Relação com classes existentes** | Nenhum decorador altera o componente | Nenhum iterador altera a coleção | Nenhum visitor altera os elementos |
-| **Exemplo no projeto** | Adicionar juros/taxa/seguro a um pagamento | Percorrer a casa toda, por cômodo ou por tipo | Calcular preço, frete e imposto do carrinho |
-
-## 5. Conclusão
-
-Os três padrões demonstrados compartilham o mesmo princípio central da categoria **Extensão**: permitir que o sistema cresça **adicionando** código novo em vez de **modificar** o código existente. O Decorator estende objetos por composição em tempo de execução; o Iterator desacopla o percurso da estrutura interna da coleção; o Visitor concentra operações variantes fora da hierarquia de elementos. Em todos os casos, o resultado é um sistema mais flexível, coeso e aderente ao princípio Aberto-Fechado — cada mini-projeto Java apresentado compila e executa de forma independente e pode ser estendido com um único arquivo novo, sem tocar em nenhuma classe já existente.
